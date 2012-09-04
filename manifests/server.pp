@@ -22,7 +22,7 @@ class jmeter::server() {
     refreshonly => true,
   }
 
-  service { 'jmeter-server':
+  service { 'jmeter':
     ensure  => running,
     enable  => true,
     require => Exec['jmeter-update-rc'],
