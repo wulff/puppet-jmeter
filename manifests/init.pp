@@ -24,8 +24,10 @@ class jmeter() {
   }
 
   file { '/usr/bin/jmeter':
-    ensure  => link,
-    target  => '/opt/apache-jmeter-2.7/bin/jmeter',
+    source  => 'puppet:///modules/jmeter/jmeter.sh',
+    owner   => root,
+    group   => root,
+    mode    => 0755,
     require => Exec['install-jmeter'],
   }
 }
