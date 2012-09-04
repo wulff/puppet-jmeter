@@ -3,9 +3,7 @@ Puppet JMeter
 
 This class installs the latest stable version of JMeter from apache.org.
 
-The init script included in this module is based on the one found in https://github.com/pdrakeweb/puppet-jmeter
-
-The jmeter.sh and jmeter-server.sh scripts are from the Ubuntu jmeter package.
+The original init script can be found at https://gist.github.com/2830209, only the IP address and the location of JMeter have been changed.
 
 
 Basic usage
