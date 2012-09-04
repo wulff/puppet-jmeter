@@ -9,7 +9,7 @@
 class jmeter::server() {
   include jmeter
 
-  file { '/etc/init.d/jmeter-server':
+  file { '/etc/init.d/jmeter':
     source => 'puppet:///modules/jmeter/jmeter-server',
     owner  => root,
     group  => root,
@@ -17,8 +17,8 @@ class jmeter::server() {
   }
 
   exec { 'jmeter-update-rc':
-    command     => 'update-rc.d jmeter-server defaults',
-    subscribe   => File['/etc/init.d/jmeter-server'],
+    command     => 'update-rc.d jmeter defaults',
+    subscribe   => File['/etc/init.d/jmeter'],
     refreshonly => true,
   }
 

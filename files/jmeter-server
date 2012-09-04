@@ -14,7 +14,7 @@
 # PATH should only include /usr/* if it runs after the mountnfs.sh script
 PATH=/sbin:/usr/sbin:/bin:/usr/bin
 DESC="Apache JMeter Remote Server"
-NAME=jmeter-server
+NAME=jmeter
 JMETER_PATH=/usr/share/jmeter
 # Change this to your IP
 JMETER_IP=33.33.33.40
