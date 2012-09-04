@@ -17,7 +17,7 @@ class jmeter() {
   }
 
   exec { 'install-jmeter':
-    command => 'tar xzf /root/apache-jmeter-2.7.tgz && mv apache-jmeter-2.7',
+    command => 'tar xzf /root/apache-jmeter-2.7.tgz && mv apache-jmeter-2.7 jmeter',
     cwd     => '/usr/share',
     creates => '/usr/share/jmeter',
     require => Exec['download-jmeter'],
