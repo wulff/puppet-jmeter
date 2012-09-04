@@ -1,0 +1,60 @@
+#!/bin/sh
+### BEGIN INIT INFO
+# Provides:          jmeter-server
+# Required-Start:    $all
+# Required-Stop:     $all
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: starts the jmeter server
+# Description:       starts the jmeter server
+### END INIT INFO
+#
+#  Once installed, use "sudo update-rc.d jmeter-server defaults" to enable!
+
+# Source function library
+. /lib/lsb/init-functions
+
+NAME=jmeter-server
+DESC="jmeter server"
+DAEMON=/usr/bin/jmeter-server
+PIDFILE=/var/run/$NAME.pid
+DAEMON_OPTS=""
+
+test -x /usr/bin/java || exit 0
+test -x $DAEMON || exit 0
+
+set -e
+
+case "$1" in
+  start)
+    echo "Starting $DESC"
+    if start-stop-daemon \
+      --start --background --quiet --pidfile ${PIDFILE} --exec ${DAEMON} -- \
+      ${DAEMON_OPTS} 2>&1; then
+      echo "$DESC started"
+      exit 0
+    else
+      cat $output
+      exit 1
+    fi
+    ;;
+  stop)
+    echo "Stopping $DESC"
+    if ps fauwx | grep org.apache.jmeter.NewDriver | grep -v vi | grep -v grep | awk {'print $2'} | xargs kill; then
+       echo "$DESC stopped"
+      exit 0
+    else
+      exit 1
+    fi
+    ;;
+  restart)
+    $0 stop
+    $0 start
+    ;;
+  *)
+    echo "Usage: $0 {start|stop|restart}"
+    exit 1
+    ;;
+esac
+
+exit 0
