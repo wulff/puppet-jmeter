@@ -16,7 +16,7 @@
 
 NAME=jmeter-server
 DESC="jmeter server"
-DAEMON=/usr/bin/jmeter-server
+DAEMON=/usr/share/jmeter/bin/jmeter-server
 PIDFILE=/var/run/$NAME.pid
 DAEMON_OPTS=""
 

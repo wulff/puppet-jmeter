@@ -9,19 +9,11 @@
 class jmeter::server() {
   include jmeter
 
-  file { '/usr/bin/jmeter-server':
-    source  => 'puppet:///modules/jmeter/jmeter-server.sh',
-    owner   => root,
-    group   => root,
-    mode    => 0755,
-    require => Exec['install-jmeter'],
-  }
-
   file { '/etc/init.d/jmeter-server':
     source => 'puppet:///modules/jmeter/jmeter-server',
-    owner   => root,
-    group   => root,
-    mode    => 0755,
+    owner  => root,
+    group  => root,
+    mode   => 0755,
   }
 
   exec { 'jmeter-update-rc':

@@ -17,17 +17,9 @@ class jmeter() {
   }
 
   exec { 'install-jmeter':
-    command => 'tar xzf /root/apache-jmeter-2.7.tgz && chown -R root.root /opt/apache-jmeter-2.7',
-    cwd     => '/opt',
-    creates => '/opt/apache-jmeter-2.7',
+    command => 'tar xzf /root/apache-jmeter-2.7.tgz && mv apache-jmeter-2.7',
+    cwd     => '/usr/share',
+    creates => '/usr/share/jmeter',
     require => Exec['download-jmeter'],
-  }
-
-  file { '/usr/bin/jmeter':
-    source  => 'puppet:///modules/jmeter/jmeter.sh',
-    owner   => root,
-    group   => root,
-    mode    => 0755,
-    require => Exec['install-jmeter'],
   }
 }
