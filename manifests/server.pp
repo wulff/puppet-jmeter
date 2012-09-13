@@ -26,6 +26,6 @@ class jmeter::server() {
     ensure    => running,
     enable    => true,
     require   => Exec['jmeter-update-rc'],
-    subscribe => Exec['install-jmeter-plugins'],
+    subscribe => [File['/etc/init.d/jmeter'], Exec['install-jmeter-plugins']],
   }
 }
