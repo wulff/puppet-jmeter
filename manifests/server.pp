@@ -1,19 +1,19 @@
 # == Class: jmeter::server
 #
-# This class configures the server componet of JMeter.
+# This class configures the server component of JMeter.
 #
 # === Examples
 #
 #   class { 'jmeter::server': }
 #
-class jmeter::server() {
+class jmeter::server($server_ip = '33.33.33.10') {
   include jmeter
 
   file { '/etc/init.d/jmeter':
-    source => 'puppet:///modules/jmeter/jmeter-server',
-    owner  => root,
-    group  => root,
-    mode   => 0755,
+    content => template('jmeter/jmeter-init.erb'),
+    owner   => root,
+    group   => root,
+    mode    => 0755,
   }
 
   exec { 'jmeter-update-rc':
