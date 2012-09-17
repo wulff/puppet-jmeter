@@ -15,9 +15,15 @@ Install JMeter:
 
     class { 'jmeter': }
 
-Install JMeter server:
+Install JMeter server using the default host-only IP address 33.33.33.10:
 
     class { 'jmeter::server': }
+
+Install JMeter server using a custom host-only IP address:
+
+    class { 'jmeter::server':
+      server_ip => '33.33.33.42',
+    }
 
 
 Authors
